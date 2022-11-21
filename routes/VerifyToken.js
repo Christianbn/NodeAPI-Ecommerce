@@ -23,3 +23,13 @@ export const verifyTokenAndAuthorization = (req, res, next) => {
         }
     })
 }
+
+export const verifyTokenAndAdmin = (req, res, next) => {
+    verifyToken(req, res, () => {
+        if (req.usuario.admin) {
+            next();
+        } else {
+            res.status(403).json('Acesso negado!')
+        }
+    })
+}
