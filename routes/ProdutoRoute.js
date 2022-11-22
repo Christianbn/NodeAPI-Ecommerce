@@ -16,25 +16,35 @@ ProdutoRoute.get('/:id', async (req, res) => {
 
 //Get all
 ProdutoRoute.get('/', async (req, res) => {
-    const queryCategoria = req.query.categoria;
     try {
-        let produtos;
-
-        if (queryCategoria) {
-            produtos = await Produto.find({
-                categoria: {
-                    $in: queryCategoria,
-                }
-            })
-        } else {
-            produtos = await produtos.find()
-        }
-
-        res.status(200).json(produtos);
+        const produto = await Produto.find()
+        res.status(200).json(produto);
     } catch (error) {
         res.status(500).json(error)
     }
 })
+
+// //Get all com query
+// ProdutoRoute.get('/', async (req, res) => {
+//     const queryCategoria = req.query.categoria;
+//     try {
+//         let produtos;
+
+//         if (queryCategoria) {
+//             produtos = await Produto.find({
+//                 categoria: {
+//                     $in: queryCategoria,
+//                 }
+//             })
+//         } else {
+//             produtos = await produtos.find()
+//         }
+
+//         res.status(200).json(produtos);
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
 
 //Create
 ProdutoRoute.post('/', verifyTokenAndAdmin, async (req, res) => {
