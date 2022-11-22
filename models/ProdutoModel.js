@@ -8,7 +8,7 @@ const produtoSchema = new mongoose.Schema(
         categoria: { type: String, require: true },
         preco: { type: Number, require: true },
         quantidadeEstoque: { type: Number, require: true },
-        imagem: { type: String, require: true }
+        imagem: { type: URL, require: true }
 
     },
     {

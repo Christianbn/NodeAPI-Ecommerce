@@ -16,9 +16,9 @@ const app = Express()
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }))
 
-app.use('/api/produtos', ProdutoRoute)
 app.use('/api/auth', LoginRoute)
 app.use('/api/usuario', UsuarioRoute)
+app.use('/api/produtos', ProdutoRoute)
 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message })
