@@ -16,9 +16,6 @@ const app = Express()
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }))
 
-app.use('/api', (req, res) => {
-    res.json({ success: true, message: 'Bem vindo a Ecommerce Api' })
-})
 app.use('/api/auth', LoginRoute)
 app.use('/api/usuario', UsuarioRoute)
 app.use('/api/produtos', ProdutoRoute)
